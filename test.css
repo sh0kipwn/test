@@ -49,7 +49,7 @@ img{max-width:100%;height:auto;display:block}
 }
 .hero-banner img{
   width:100%;
-  height:auto;                 /* aspect ratio-г барина */
+  height:400;                 /* aspect ratio-г барина */
   object-fit:contain;          /* бүтнээр нь багтаана */
   object-position:center center;
 }
@@ -97,3 +97,4 @@ h2{margin:24px 0 10px}
   .hero-sep{height:1px}       /* утсан дээр бүр нимгэн 1px */
   .btn-urgent{left:12px;bottom:12px;padding:10px 14px}
 }
+
