@@ -3,51 +3,50 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Эрүүгийн цагдаагийн алба — Demo</title>
-  <!-- Танай CSS файлын нэр (test.css) -->
+  <title>ШИЛДЭГ МӨРДӨГЧ ШАЛГАРУУЛАХ ТЭМЦЭЭН</title>
   <link rel="stylesheet" href="test.css" />
 </head>
 <body>
 
-  <!-- Дээд хөх зурвас (лого, сошл, хайлт) -->
+  <!-- ───── Top bar ───── -->
   <div class="topbar">
     <div class="container topbar-row">
-
-      <div class="brand-left">
-        <img src="эца.png" alt="Лого" class="logo">
+      <a class="brand-left" href="#">
+        <img src="эца.png" alt="Лого" class="logo" />
         <div class="brand-titles">
           <h1 class="site-title">ШИЛДЭГ МӨРДӨГЧ ШАЛГАРУУЛАХ ТЭМЦЭЭН</h1>
           <p class="site-subtitle">АМЖИЛТ ХҮСЬЕ</p>
         </div>
-      </div>
+      </a>
 
-      <!-- ✅ Top actions — Facebook линктэй, давхардалгүй -->
       <div class="top-actions">
         <nav class="mini-links">
           <a href="#">Асуулт хариулт</a>
         </nav>
-
         <div class="socials">
-          <!-- ЭНД Facebook URL-ээ солино -->
           <a aria-label="Facebook"
-            href="https://www.facebook.com/kkk.bk"
-            class="ic fb" target="_blank" rel="noopener">f</a>
+             href="https://www.facebook.com/kkk.bk"
+             class="ic fb" target="_blank" rel="noopener">f</a>
           <a aria-label="X" href="#" class="ic x">x</a>
           <a aria-label="YouTube" href="#" class="ic yt">▶</a>
         </div>
-
         <form class="search" role="search">
           <input type="search" placeholder="Хайх…" aria-label="Хайх" />
         </form>
       </div>
-
     </div>
   </div>
 
-  <!-- Доод нав (том uppercase цэс) -->
+  <!-- ───── Main nav (desktop) + hamburger (mobile) ───── -->
   <header class="main-nav">
     <div class="container nav-row">
-      <nav class="menu" aria-label="Main">
+      <!-- Hamburger (checkbox hack) -->
+      <input id="nav-toggle" type="checkbox" class="nav-toggle" aria-label="Меню нээх" />
+      <label for="nav-toggle" class="hamburger" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="menu" aria-label="Үндсэн цэс">
         <a href="#about" class="active">БИДНИЙ ТУХАЙ</a>
         <a href="#news">МЭДЭЭ, МЭДЭЭЛЭЛ</a>
         <a href="#law">ХУУЛЬ ЭРХ ЗҮЙ</a>
@@ -57,23 +56,13 @@
     </div>
   </header>
 
-  <!-- Том hero зураг + улаан товч -->
+  <!-- ───── Hero banner ───── -->
   <section class="hero-banner" aria-label="Hero">
-      <img src="ar.jpg" alt="Цагдаагийн алба хаагчид" width="966" height="200" />
-      <a class="btn-urgent" href="#news">ШУУРХАЙ МЭДЭЭ ➜</a>
+    <img src="ar.jpg" alt="Цагдаагийн алба хаагчид" />
+    <a class="btn-urgent" href="#news">ШУУРХАЙ МЭДЭЭ ➜</a>
   </section>
 
-  <!-- Саарал таб-стрип -->
-  <div class="tabs-strip">
-    <div class="container tabs">
-      <a href="#news" class="tab active">ШИНЭ МЭДЭЭ</a>
-      <a href="#" class="tab">АВЛИГЫН ЭСРЭГ ҮЙЛ АЖИЛЛАГАА</a>
-      <a href="#" class="tab">ЦАГ ҮЕИЙН ЯВДАЛ</a>
-      <a href="#" class="tab">СЭРЭМЖЛҮҮЛЭГ</a>
-      <a href="#" class="tab more">БУСАД ➜</a>
-    </div>
-  </div>
-
+  <!-- ───── Content ───── -->
   <main class="container content">
     <section id="features" class="cards3">
       <article class="card">
@@ -94,12 +83,12 @@
       <h2>Бидний тухай</h2>
       <p>Эрүүгийн цагдаагийн албаны Кибер гэмт хэрэгтэй тэмцэх газар.</p>
     </section>
-
   </main>
 
-  <!-- Нууц булангийн товч (hint-тай) -->
+  <!-- ───── Нууц булангийн товч ───── -->
   <a id="secret-corner" href="https://we.tl/t-TlHnTWqR6q" target="_blank" rel="noopener"></a>
 
+  <!-- ───── Footer ───── -->
   <footer class="footer">
     <div class="container">
       <p>© 2025</p>
@@ -108,4 +97,3 @@
 
 </body>
 </html>
-
