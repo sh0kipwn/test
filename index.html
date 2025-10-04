@@ -3,36 +3,84 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CPD Test</title>
+  <title>Эрүүгийн цагдаагийн алба — Demo</title>
   <link rel="stylesheet" href="test.css" />
 </head>
 <body>
-  <header class="nav">
-    <div class="container">
-      <a class="logo" href="#">CPD</a>
+
+  <!-- Дээд хөх зурвас (лого, сошл, хайлт) -->
+  <div class="topbar">
+    <div class="container topbar-row">
+      <div class="brand-left">
+        <img src="assets/logo.png" alt="Лого" class="logo">
+        <div class="brand-titles">
+          <h1 class="site-title">ЭРҮҮГИЙН ЦАГДААГИЙН АЛБА</h1>
+          <p class="site-subtitle">ЦАГ ХУГАЦАА, ОРОН ЗАЙГ ҮЛ ХАМААРАН МЭРГЭШСЭН ҮЙЛ АЖИЛЛАГАА ЯВУУЛНА</p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <nav class="mini-links">
+          <a href="#">Асуулт хариулт</a>
+        </nav>
+        <div class="socials">
+          <a aria-label="Facebook" href="#" class="ic fb">f</a>
+          <a aria-label="X" href="#" class="ic x">x</a>
+          <a aria-label="YouTube" href="#" class="ic yt">▶</a>
+        </div>
+        <form class="search">
+          <input type="search" placeholder="Хайх…" aria-label="Хайх" />
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Доод нав (том uppercase цэс) -->
+  <header class="main-nav">
+    <div class="container nav-row">
       <nav class="menu">
-        <a href="#features">Онцлог</a>
-        <a href="#about">Бид</a>
+        <a href="#about" class="active">БИДНИЙ ТУХАЙ</a>
+        <a href="#news">МЭДЭЭ, МЭДЭЭЛЭЛ</a>
+        <a href="#law">ХУУЛЬ ЭРХ ЗҮЙ</a>
+        <a href="#open">ХҮНИЙ НӨӨЦИЙН ИЛ ТОД БАЙДАЛ</a>
+        <a href="#glass">ШИЛЭН ДАНС</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <h1>test</h1>
-    <p>test site</p>
+  <!-- Том hero зураг + улаан товч -->
+  <section class="hero-banner" aria-label="Hero">
+    <picture>
+      <source srcset="assets/hero.webp" type="image/webp"/>
+      <img src="assets/hero.jpg" alt="Цагдаагийн алба хаагчид" width="1600" height="650" />
+    </picture>
+    <a class="btn-urgent" href="#news">ШУУРХАЙ МЭДЭЭ ➜</a>
+  </section>
 
-    <section id="features" class="features">
-      <article>
+  <!-- Саарал таславч / таб-подоб -->
+  <div class="tabs-strip">
+    <div class="container tabs">
+      <a href="#news" class="tab active">ШИНЭ МЭДЭЭ</a>
+      <a href="#" class="tab">АВЛИГЫН ЭСРЭГ ҮЙЛ АЖИЛЛАГАА</a>
+      <a href="#" class="tab">ЦАГ ҮЕИЙН ЯВДАЛ</a>
+      <a href="#" class="tab">СЭРЭМЖЛҮҮЛЭГ</a>
+      <a href="#" class="tab more">БУСАД ➜</a>
+    </div>
+  </div>
+
+  <main class="container content">
+    <section id="features" class="cards3">
+      <article class="card">
         <h3>Тэмцээн</h3>
         <p>Шилдэг мөрдөгч шалгаруулах.</p>
       </article>
-      <article>
+      <article class="card">
         <h3>Даалгавар</h3>
-        <p>Та бүхэн гэмт хэргийн нууцан мэдээллийг олох ёстой.</p>
+        <p>Та бүхэн нууц мэдээллийг олох ёстой.</p>
       </article>
-      <article>
+      <article class="card">
         <h3>Хөтөч</h3>
-        <p>Энэхүү сайтанд 2 мэдээлэл нуусан.</p>
+        <p>Сайт дээр 2 мэдээлэл нуусан.</p>
       </article>
     </section>
 
@@ -40,14 +88,24 @@
       <h2>Бидний тухай</h2>
       <p>Эрүүгийн цагдаагийн албаны Кибер гэмт хэрэгтэй тэмцэх газар.</p>
     </section>
+
+    <!-- Галерей (шаардлагатай бол) -->
+    <section class="gallery">
+      <div class="decor-grid">
+        <figure class="decor-card">
+          <img src="assets/decor1.jpg" alt="Decor 1" width="1200" height="800" loading="lazy">
+          <figcaption>Зураг #1</figcaption>
+        </figure>
+        <figure class="decor-card">
+          <img src="assets/decor2.jpg" alt="Decor 2" width="1200" height="800" loading="lazy">
+          <figcaption>Зураг #2</figcaption>
+        </figure>
+      </div>
+    </section>
   </main>
 
-  <!-- 🔒 Нуугдсан товч -->
-  <a id="secret-corner"
-     href="https://we.tl/t-TlHnTWqR6q"
-     target="_blank"
-     rel="noopener"
-     aria-label="secret jump"></a>
+  <!-- Нууц булангийн товч (hint-тай) -->
+  <a id="secret-corner" href="https://we.tl/t-TlHnTWqR6q" target="_blank" rel="noopener"></a>
 
   <footer class="footer">
     <div class="container">
