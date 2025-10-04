@@ -1,23 +1,20 @@
 :root{
-  --bg:#0b1220; --card:#11182a; --text:#e8eefc; --muted:#a6b0c3; --brand:#6aa3ff; --border:#1b2438;
+  --bg:#0b1220; --card:#11182a; --text:#e8eefc; --muted:#a6b0c3; --border:#1b2438;
 }
 *{box-sizing:border-box} html,body{margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font:16px/1.6 system-ui,Segoe UI,Roboto,Arial}
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
 a{color:inherit;text-decoration:none}
 
-.nav{position:sticky;top:0;border-bottom:1px solid var(--border);backdrop-filter:blur(8px);background:rgba(11,18,32,.6);z-index:10}
+.nav{position:sticky;top:0;border-bottom:1px solid var(--border);background:rgba(11,18,32,.6);z-index:10}
 .nav .container{display:flex;align-items:center;justify-content:space-between;height:64px}
 .logo{font-weight:700;letter-spacing:.5px}
 .menu a{margin-left:18px}
 
-h1{margin:26px 0 8px}
-p{color:var(--muted)}
-
 .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:24px 0}
-.features article{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;min-height:120px}
+.features article{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
 .features h3{margin:0 0 6px}
-.features p{margin:0}
+.features p{margin:0;color:var(--muted)}
 
 .about{padding:24px 0}
 .footer{border-top:1px solid var(--border);margin-top:36px}
@@ -26,17 +23,12 @@ p{color:var(--muted)}
 /* 📌 Нуугдсан булангийн товч */
 #secret-corner{
   position:fixed; right:16px; bottom:16px;
-  width:44px; height:44px; border-radius:10px;
-  background:rgba(0,255,136,0.35);  /* ногоондуу, харагдана */
-  border:1px dashed rgba(255,255,255,0.6);
-  z-index:99999;
+  width:44px; height:44px; border-radius:8px;
+  background:rgba(0,255,136,0.3);   /* 👈 эхлээд харагдаж байгаа ногоон */
+  border:1px dashed rgba(255,255,255,0.5);
+  z-index:9999;
   display:block;
 }
-#secret-corner:hover, #secret-corner:focus{ outline:2px solid #fff }
-
-/* Hover/focus үед л арай мэдэгдэнэ (хэрэгтэй бол арилга) */
-
-@media (max-width:900px){
-  .features{grid-template-columns:1fr}
+#secret-corner:hover, #secret-corner:focus{
+  outline:2px solid #fff;
 }
-
