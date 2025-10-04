@@ -21,14 +21,38 @@ a{color:inherit;text-decoration:none}
 .footer .container{padding:20px 0}
 
 /* 📌 Нуугдсан булангийн товч */
+/* hint-тай, бага зэрэг харагдах булангийн товч */
 #secret-corner{
-  position:fixed; right:16px; bottom:16px;
-  width:44px; height:44px; border-radius:8px;
-  background:rgba(0,255,136,0.3);   /* 👈 эхлээд харагдаж байгаа ногоон */
-  border:1px dashed rgba(255,255,255,0.5);
-  z-index:9999;
-  display:block;
+  position:fixed; right:14px; bottom:14px;
+  width:34px; height:34px; border-radius:10px;
+  display:block; z-index:9999;
+  /* маш зөөлөн харагдахуйц hint */
+  background:radial-gradient(closest-side,
+              rgba(255,255,255,0.08),
+              rgba(255,255,255,0.02) 70%,
+              rgba(255,255,255,0) 100%);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06) inset,
+    0 8px 18px rgba(0,0,0,0.35);
+  backdrop-filter: blur(2px);
+  transition: filter .25s ease, box-shadow .25s ease, transform .15s ease;
 }
-#secret-corner:hover, #secret-corner:focus{
-  outline:2px solid #fff;
+
+/* hover/focus үед л арай тодорно */
+#secret-corner:hover,
+#secret-corner:focus{
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.12) inset,
+    0 10px 24px rgba(0,0,0,0.5);
+  filter: brightness(1.08);
+  outline: 1px solid rgba(255,255,255,0.12);
+  transform: translateY(-1px);
 }
+
+/* мобайл дээр дарахад амар болгож бага зэрэг томруулна */
+@media (max-width: 640px){
+  #secret-corner{ width:40px; height:40px; right:12px; bottom:12px; }
+}
+
+
+
