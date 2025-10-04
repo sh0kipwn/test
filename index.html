@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Эрүүгийн цагдаагийн алба — Demo</title>
+  <!-- Танай CSS файлын нэр (test.css) -->
   <link rel="stylesheet" href="test.css" />
 </head>
 <body>
@@ -11,6 +12,7 @@
   <!-- Дээд хөх зурвас (лого, сошл, хайлт) -->
   <div class="topbar">
     <div class="container topbar-row">
+
       <div class="brand-left">
         <img src="assets/logo.png" alt="Лого" class="logo">
         <div class="brand-titles">
@@ -19,26 +21,33 @@
         </div>
       </div>
 
+      <!-- ✅ Top actions — Facebook линктэй, давхардалгүй -->
       <div class="top-actions">
         <nav class="mini-links">
           <a href="#">Асуулт хариулт</a>
         </nav>
+
         <div class="socials">
-          <a aria-label="Facebook" href="#" class="ic fb">f</a>
+          <!-- ЭНД Facebook URL-ээ солино -->
+          <a aria-label="Facebook"
+             href="facebook.com/111020116Bat"
+             class="ic fb" target="_blank" rel="noopener">f</a>
           <a aria-label="X" href="#" class="ic x">x</a>
           <a aria-label="YouTube" href="#" class="ic yt">▶</a>
         </div>
-        <form class="search">
+
+        <form class="search" role="search">
           <input type="search" placeholder="Хайх…" aria-label="Хайх" />
         </form>
       </div>
+
     </div>
   </div>
 
   <!-- Доод нав (том uppercase цэс) -->
   <header class="main-nav">
     <div class="container nav-row">
-      <nav class="menu">
+      <nav class="menu" aria-label="Main">
         <a href="#about" class="active">БИДНИЙ ТУХАЙ</a>
         <a href="#news">МЭДЭЭ, МЭДЭЭЛЭЛ</a>
         <a href="#law">ХУУЛЬ ЭРХ ЗҮЙ</a>
@@ -57,7 +66,7 @@
     <a class="btn-urgent" href="#news">ШУУРХАЙ МЭДЭЭ ➜</a>
   </section>
 
-  <!-- Саарал таславч / таб-подоб -->
+  <!-- Саарал таб-стрип -->
   <div class="tabs-strip">
     <div class="container tabs">
       <a href="#news" class="tab active">ШИНЭ МЭДЭЭ</a>
@@ -89,8 +98,8 @@
       <p>Эрүүгийн цагдаагийн албаны Кибер гэмт хэрэгтэй тэмцэх газар.</p>
     </section>
 
-    <!-- Галерей (шаардлагатай бол) -->
-    <section class="gallery">
+    <!-- Галерей (хүсвэл зургаа assets/ дотор нэрлээд тавина) -->
+    <section class="gallery" aria-label="Gallery">
       <div class="decor-grid">
         <figure class="decor-card">
           <img src="assets/decor1.jpg" alt="Decor 1" width="1200" height="800" loading="lazy">
@@ -112,5 +121,6 @@
       <p>© 2025</p>
     </div>
   </footer>
+
 </body>
 </html>
