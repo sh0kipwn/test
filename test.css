@@ -25,18 +25,18 @@ p{color:var(--muted)}
 
 /* 📌 Нуугдсан булангийн товч */
 #secret-corner{
-  position:fixed; right:8px; bottom:8px;
-  width:32px; height:32px; border-radius:8px;
-  background:rgba(255,255,255,0.02);      /* маш бага харагдана */
-  border:1px solid rgba(0,0,0,0.03);
-  z-index:9999;
+  position:fixed; right:16px; bottom:16px;
+  width:44px; height:44px; border-radius:10px;
+  background:rgba(0,255,136,0.35);  /* ногоондуу, харагдана */
+  border:1px dashed rgba(255,255,255,0.6);
+  z-index:99999;
   display:block;
 }
+#secret-corner:hover, #secret-corner:focus{ outline:2px solid #fff }
+
 /* Hover/focus үед л арай мэдэгдэнэ (хэрэгтэй бол арилга) */
-#secret-corner:hover, #secret-corner:focus{
-  outline:1px solid rgba(255,255,255,0.06);
-}
 
 @media (max-width:900px){
   .features{grid-template-columns:1fr}
 }
+
