@@ -108,4 +108,17 @@ h2{margin:24px 0 10px}
     bottom:calc(env(safe-area-inset-bottom,0px) + 16px);
     width:48px;height:48px;border-radius:14px;
   }
+  
+/* ==== HERO HEIGHT OVERRIDE (put at the very end) ==== */
+.hero-banner{
+  height: 200px !important;          /* таны хүссэн өндөр */
+  overflow: hidden;
 }
+.hero-banner img{
+  width: 100% !important;
+  height: 100% !important;           /* контейнерийн 200px-т таарна */
+  object-fit: cover !important;      /* зургийг хайчилж багтаана */
+  display: block;
+}
+  }
+
