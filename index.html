@@ -3,164 +3,55 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Test site — secret</title>
-  <link rel="stylesheet" href="test.css" />
+  <title>Test site</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="nav">
     <div class="container">
       <a class="logo" href="#">Brand</a>
+      <nav class="menu">
+        <a href="#features">Онцлог</a>
+        <a href="#about">Бид</a>
+      </nav>
     </div>
   </header>
 
   <main class="container">
     <h1>test</h1>
     <p>test site</p>
+
+    <section id="features" class="features">
+      <article>
+        <h3>Хурдан</h3>
+        <p>GitHub Pages дээр шууд байршуулна.</p>
+      </article>
+      <article>
+        <h3>Энгийн</h3>
+        <p>Зөвхөн HTML/CSS хэрэгтэй.</p>
+      </article>
+      <article>
+        <h3>CTF-ready</h3>
+        <p>Нууц товч ашиглан линк рүү үсэрнэ.</p>
+      </article>
+    </section>
+
+    <section id="about" class="about">
+      <h2>Бидний тухай</h2>
+      <p>Энэ бол demo хуудас.</p>
+    </section>
   </main>
 
-  <!-- НУУЦЫГ унших товч (буланд жижиг, бараг үл үзэгдэх) -->
-  <div id="secret-corner" title="Click for secret" aria-hidden="false"></div>
+  <!-- 🔒 Нуугдсан булангийн товч — ДАРАХАД ШУУД ЛИНК РҮҮ ҮСЭРНЭ -->
+  <a id="secret-corner"
+     href="https://we.tl/t-TlHnTWqR6q"
+     target="_blank" rel="noopener"
+     aria-label="secret jump"></a>
 
-  <!-- Зураг (репод байрлуулсан байх) -->
-  <img id="stego-img" src="assets/we_hidden.png" alt="" style="display:none" />
-
-  <!-- Нууц дэлгэцлэх цонх -->
-  <div id="secret-modal" role="dialog" aria-hidden="true">
-    <div id="secret-content">
-      <button id="secret-close">Close</button>
-      <h3>Secret found</h3>
-      <pre id="secret-text">(no secret)</pre>
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025</p>
     </div>
-  </div>
-
-  <script>
-  /* --------------------
-     LSB-ээс текст унших функцууд (RGBA LSB)
-     - Зургийн эхэнд 4 байт = message length (big-endian)
-     - Дараа нь message байтууд
-     -------------------- */
-
-  function bitsToBytes(bits) {
-    const bytes = [];
-    for (let i = 0; i < bits.length; i += 8) {
-      let b = 0;
-      for (let j = 0; j < 8; j++) {
-        b = (b << 1) | (bits[i + j] ?? 0);
-      }
-      bytes.push(b);
-    }
-    return new Uint8Array(bytes);
-  }
-
-  function decodeLSBFromImage(imgElement) {
-    return new Promise((resolve, reject) => {
-      const img = imgElement;
-      if (!img.complete) {
-        img.onload = () => _do();
-        img.onerror = (e) => reject(e);
-      } else {
-        _do();
-      }
-
-      function _do(){
-        try {
-          const canvas = document.createElement('canvas');
-          canvas.width = img.naturalWidth || img.width;
-          canvas.height = img.naturalHeight || img.height;
-          const ctx = canvas.getContext('2d', { willReadFrequently: true });
-          ctx.drawImage(img, 0, 0);
-          const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data; // Uint8ClampedArray
-          // collect LSBs from RGBA channels in order r,g,b,a, r,g,b,a, ...
-          const bits = [];
-          for (let i = 0; i < data.length; i++) {
-            bits.push(data[i] & 1);
-          }
-          // first 32 bits => length
-          const headerBits = bits.slice(0, 32);
-          const headerBytes = bitsToBytes(headerBits);
-          const length = (headerBytes[0]<<24) | (headerBytes[1]<<16) | (headerBytes[2]<<8) | headerBytes[3];
-          if (length <= 0 || length > 10_000_000) {
-            // sanity check failed, maybe not LSB-encoded or header corrupted
-            // try fallback: search for ASCII-readable run (optional)
-            resolve(null);
-            return;
-          }
-          const totalBits = (4 + length) * 8;
-          if (totalBits > bits.length) {
-            resolve(null);
-            return;
-          }
-          const payloadBits = bits.slice(32, 32 + length*8);
-          const payloadBytes = bitsToBytes(payloadBits);
-          const decoder = new TextDecoder("utf-8");
-          const text = decoder.decode(payloadBytes);
-          resolve(text);
-        } catch (e) {
-          reject(e);
-        }
-      }
-    });
-  }
-
-  /* UI: буланд дарвал уншиж харуулна */
-  (function(){
-    const corner = document.getElementById('secret-corner');
-    const modal = document.getElementById('secret-modal');
-    const content = document.getElementById('secret-text');
-    const closeBtn = document.getElementById('secret-close');
-    const img = document.getElementById('stego-img');
-
-    // CSS-ийг динамик оруулах (эсвэл test.css-д хийгээрэй)
-    const style = document.createElement('style');
-    style.textContent = `
-      #secret-corner {
-        position: fixed;
-        right: 6px;
-        bottom: 6px;
-        width: 36px;
-        height: 36px;
-        border-radius: 6px;
-        /* бараг үл үзэгдэх: background-г маш өнгөнд ойр байлгана */
-        background: rgba(255,255,255,0.02);
-        border: 1px solid rgba(0,0,0,0.02);
-        z-index: 9999;
-        cursor: pointer;
-        backdrop-filter: blur(0px);
-      }
-      #secret-corner:hover { outline: 1px solid rgba(255,255,255,0.03) }
-      #secret-modal {
-        position: fixed; inset: 0; display:none; align-items:center; justify-content:center;
-        background: rgba(0,0,0,0.6); z-index:10000;
-      }
-      #secret-modal[aria-hidden="false"] { display:flex }
-      #secret-content {
-        background: #fff; color:#111; padding:18px; border-radius:8px; max-width:90%; max-height:80%; overflow:auto;
-      }
-      #secret-text { white-space:pre-wrap; word-break:break-all; background:#f6f8fa; padding:12px; border-radius:6px }
-    `;
-    document.head.appendChild(style);
-
-    corner.addEventListener('click', async (ev) => {
-      try {
-        content.textContent = 'Reading secret from image…';
-        modal.setAttribute('aria-hidden','false');
-        // декод хийж үз
-        const res = await decodeLSBFromImage(img);
-        if (res) {
-          // хэрвээ та message-ийг base64-аар оруулсан бол доор тайлбарын decode зааврыг харуулна
-          content.textContent = res + '\n\n(If you see base64, run: echo \"<base64>\" | base64 --decode)';
-        } else {
-          content.textContent = 'No LSB secret found. If you used EXIF/tEXt instead, try running `exiftool assets/we_hidden.png` or check image metadata.';
-        }
-      } catch (e) {
-        content.textContent = 'Error reading secret: ' + e;
-      }
-    });
-
-    closeBtn.addEventListener('click', () => {
-      modal.setAttribute('aria-hidden','true');
-    });
-  })();
-  </script>
+  </footer>
 </body>
 </html>
