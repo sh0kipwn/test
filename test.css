@@ -1,147 +1,100 @@
 :root{
+  --blue:#28338f; --blue-dark:#1f2a78; --red:#e53935;
   --bg:#0b1220; --card:#11182a; --text:#e8eefc; --muted:#a6b0c3; --border:#1b2438;
 }
+
 *{box-sizing:border-box} html,body{margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font:16px/1.6 system-ui,Segoe UI,Roboto,Arial}
-.container{max-width:1100px;margin:0 auto;padding:0 20px}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
 a{color:inherit;text-decoration:none}
 
-/* Header */
-.nav{position:sticky;top:0;border-bottom:1px solid var(--border);background:rgba(11,18,32,.6);z-index:10;backdrop-filter:blur(8px)}
-.nav .container{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-weight:700;letter-spacing:.5px}
-.menu a{margin-left:18px}
+/* ---------- TOPBAR ---------- */
+.topbar{background:linear-gradient(90deg,var(--blue),var(--blue-dark)); color:#fff;}
+.topbar-row{display:flex;align-items:center;justify-content:space-between;gap:16px; padding:10px 0}
+.brand-left{display:flex;align-items:center;gap:14px}
+.logo{width:56px;height:56px;object-fit:contain}
+.site-title{margin:0; font-weight:800; letter-spacing:.5px; font-size:32px}
+.site-subtitle{margin:2px 0 0; font-size:12.5px; opacity:.9}
+.top-actions{display:flex;align-items:center;gap:14px}
+.mini-links a{font-size:14px; opacity:.9}
+.socials .ic{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;
+  background:rgba(255,255,255,.15);font-weight:700}
+.search input{height:32px;border-radius:16px;border:none; padding:0 12px}
 
-/* Main sections */
-h1{margin:26px 0 8px}
-p{color:var(--muted)}
+/* ---------- MAIN NAV (uppercase tabs) ---------- */
+.main-nav{background:#fff; color:#0b0f1a;}
+.nav-row{display:flex;align-items:center;justify-content:flex-start; height:58px}
+.menu{display:flex;gap:26px; flex-wrap:wrap}
+.menu a{font-weight:800; text-transform:uppercase; letter-spacing:.6px; color:#0b0f1a}
+.menu a.active{border-bottom:3px solid var(--blue); padding-bottom:6px}
 
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:24px 0}
-.features article{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
-.features h3{margin:0 0 6px}
-.features p{margin:0;color:var(--muted)}
+/* ---------- HERO ---------- */
+.hero-banner{position:relative; overflow:hidden}
+.hero-banner img{display:block;width:100%;height:auto}
+.btn-urgent{
+  position:absolute; left:20px; bottom:20px;
+  background:var(--red); color:#fff; padding:12px 18px; border-radius:4px;
+  font-weight:800; box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
 
-.about{padding:24px 0}
-.footer{border-top:1px solid var(--border);margin-top:36px}
-.footer .container{padding:20px 0}
+/* ---------- TABS STRIP ---------- */
+.tabs-strip{background:#eceff1; color:#111}
+.tabs{display:flex; gap:20px; align-items:center; padding:14px 0}
+.tab{font-weight:700; color:#37474f}
+.tab.active{color:var(--red); border-bottom:3px solid var(--red); padding-bottom:6px}
+.tab.more{margin-left:auto; color:#c62828}
 
-/* =========================
-   Нуугдсан булангийн товч (жижигхэн hint-тай)
-   ========================= */
+/* ---------- CONTENT ---------- */
+h2{margin:24px 0 10px}
+.cards3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; padding:24px 0}
+.card{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px}
+.card h3{margin:0 0 6px}
+.card p{margin:0;color:var(--muted)}
+.about{padding:10px 0 24px}
+
+/* ---------- GALLERY ---------- */
+.gallery{padding:10px 0 24px}
+.decor-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+.decor-card{margin:0;background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;
+  transition:transform .2s, box-shadow .2s; box-shadow:0 10px 26px rgba(0,0,0,.28)}
+.decor-card img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.decor-card:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(0,0,0,.36)}
+.decor-card figcaption{padding:10px 12px;color:var(--muted);font-size:14px;border-top:1px solid var(--border)}
+
+/* ---------- SECRET CORNER (hint) ---------- */
 #secret-corner{
-  position:fixed; right:14px; bottom:14px;
-  width:34px; height:34px; border-radius:10px;
-  display:block; z-index:9999;
-  background:radial-gradient(closest-side,
-              rgba(255,255,255,0.08),
-              rgba(255,255,255,0.02) 70%,
-              rgba(255,255,255,0) 100%);
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.06) inset,
-    0 8px 18px rgba(0,0,0,0.35);
-  backdrop-filter: blur(2px);
-  transition: filter .25s ease, box-shadow .25s ease, transform .15s ease;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
+  position:fixed; right:16px; bottom:18px; width:40px; height:40px; border-radius:12px; display:block; z-index:2147483647;
+  background:radial-gradient(closest-side, rgba(255,255,255,.08), rgba(255,255,255,.02) 70%, rgba(255,255,255,0) 100%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.06) inset, 0 10px 24px rgba(0,0,0,.45);
+  -webkit-tap-highlight-color:transparent; touch-action:manipulation;
 }
 #secret-corner:hover, #secret-corner:focus-visible{
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.12) inset,
-    0 10px 24px rgba(0,0,0,0.5);
-  filter: brightness(1.08);
-  outline: 1px solid rgba(255,255,255,0.12);
-  transform: translateY(-1px);
+  box-shadow:0 0 0 1px rgba(255,255,255,.1) inset, 0 12px 28px rgba(0,0,0,.55);
 }
 
-/* =========================
-   Mobile/tablet сайжруулалт
-   ========================= */
-img, video { max-width:100%; height:auto; }
+/* ---------- FOOTER ---------- */
+.footer{border-top:1px solid var(--border); margin-top:28px}
+.footer .container{padding:18px 0}
 
-/* 900px-аас доош: фонтууд/паддинг багасгана, картууд 1 багана */
-@media (max-width: 900px){
-  .container{ padding: 0 14px; }
-  h1{ font-size: 28px; line-height: 1.2; margin: 22px 0 8px; }
-  p{ font-size: 15px; }
-
-  .features{
-    grid-template-columns: 1fr;
-    gap: 14px;
-    padding: 16px 0;
-  }
-  .features article{
-    padding: 14px;
-    border-radius: 12px;
-    min-height: auto;
-  }
-
-  .nav .container{ height: 56px; }
-  .menu a{ margin-left: 14px; }
-
-  .about{ padding: 16px 0; }
-  .footer .container{ padding: 16px 0; }
+/* ---------- RESPONSIVE ---------- */
+img,video{max-width:100%;height:auto}
+@media (max-width:1100px){
+  .site-title{font-size:28px}
 }
-
-/* Утас/таб—том tap area, safe area-гаас зайтай */
-@media (pointer:coarse), (max-width: 640px){
-  .container{ padding: 0 12px; }
-  h1{ font-size: 24px; }
-  p{ font-size: 14px; }
-
-  .menu a{ margin-left: 12px; }
-  .features{ gap: 12px; }
-  .features article{ padding: 12px; border-radius: 10px; }
-
- /* ==== SECRET CORNER – OVERRIDE (place at the very end) ==== */
-#secret-corner{
-  position: fixed;
-  /* Desktop: safe-area-гаас зайтай, ирмэгээс холдуулав */
-  right: max(24px, calc(env(safe-area-inset-right, 0px) + 16px));
-  bottom: max(28px, calc(env(safe-area-inset-bottom, 0px) + 20px));
-
-  /* Томруулсан tap/click target */
-  width: 52px; height: 52px; border-radius: 14px;
-
-  /* Давхаргын хамгийн дээр гаргана */
-  z-index: 2147483647;
-  pointer-events: auto;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  touch-action: manipulation;
-
-  /* Бага зэрэг hint л үлдээнэ (хүсвэл багасгаарай) */
-  background: radial-gradient(closest-side,
-            rgba(255,255,255,0.07),
-            rgba(255,255,255,0.02) 70%,
-            rgba(255,255,255,0) 100%);
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.05) inset,
-    0 10px 24px rgba(0,0,0,0.45);
-  outline: none;
-  transform: none;            /* hover үед шилжилтгүй */
+@media (max-width:900px){
+  .topbar-row{flex-direction:column; align-items:flex-start}
+  .site-title{font-size:24px}
+  .site-subtitle{font-size:12px}
+  .cards3{grid-template-columns:1fr}
+  .decor-grid{grid-template-columns:1fr}
 }
-#secret-corner:hover,
-#secret-corner:focus-visible{
-  filter: brightness(1.06);
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.10) inset,
-    0 12px 28px rgba(0,0,0,0.55);
-  outline: 1px solid rgba(255,255,255,0.10);
-  transform: none;            /* хөдөлгөхгүй – ирмэг рүү шахагдахгүй */
-}
-
-/* Илүү том “үл үзэгдэх” кликтэх бүс – товчны эргэн тойрноор 12px-ээр тэлнэ */
-#secret-corner::after{
-  content:"";
-  position:absolute;
-  left:-12px; top:-12px; right:-12px; bottom:-12px;
-}
-
-/* 📱 Coarse pointer / жижиг дэлгэц – бүр жаахан томруулж, илүү холдуулна */
-@media (pointer:coarse), (max-width: 640px){
+@media (pointer:coarse), (max-width:640px){
+  .site-title{font-size:22px}
+  .menu{gap:16px}
+  .btn-urgent{left:12px; bottom:12px; padding:10px 14px}
   #secret-corner{
-    right: calc(env(safe-area-inset-right, 0px) + 22px);
-    bottom: calc(env(safe-area-inset-bottom, 0px) + 26px);
-    width: 56px; height: 56px; border-radius: 16px;
+    right: calc(env(safe-area-inset-right,0px) + 14px);
+    bottom: calc(env(safe-area-inset-bottom,0px) + 16px);
+    width:48px;height:48px;border-radius:14px;
   }
 }
