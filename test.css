@@ -13,13 +13,16 @@ img{max-width:100%;height:auto;display:block}
 
 /* ─── Top bar ─── */
 .topbar{background:linear-gradient(90deg,var(--blue),var(--blue-dark));color:#fff}
-.topbar-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0}
-.brand-left{display:flex;align-items:center;gap:14px}
+.topbar-row{display:flex;align-items:center;gap:16px;padding:12px 0}
+.brand-left{display:flex;align-items:center;gap:14px;min-width:0}
 .logo{width:56px;height:56px;object-fit:contain}
-.site-title{margin:0;font-weight:800;letter-spacing:.4px;font-size:30px}
+.site-title{margin:0;font-weight:800;letter-spacing:.4px;font-size:30px;line-height:1.15}
 .site-subtitle{margin:2px 0 0;font-size:12.5px;opacity:.9}
-.top-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+
+/* баруун талд байрлуулах */
+.top-actions{margin-left:auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-end}
 .mini-links a{font-size:14px;opacity:.9}
+.socials{display:flex;gap:8px}
 .socials .ic{
   display:inline-flex;align-items:center;justify-content:center;
   width:28px;height:28px;border-radius:50%;
@@ -27,22 +30,21 @@ img{max-width:100%;height:auto;display:block}
 }
 .search input{height:32px;border-radius:16px;border:none;padding:0 12px}
 
-/* ─── Main nav + hamburger ─── */
-.main-nav{background:#fff;color:#0b0f1a;border-bottom:1px solid #e6e8ee}
-.nav-row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px}
+/* ─── Main nav ─── */
+.main-nav{background:#fff;color:#0b0f1a;border-top:1px solid rgba(255,255,255,.06)}
+.nav-row{display:flex;align-items:center;justify-content:center;min-height:52px}
 .menu{display:flex;gap:26px;flex-wrap:wrap}
 .menu a{font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:#0b0f1a}
 .menu a.active{border-bottom:3px solid var(--blue);padding-bottom:6px}
 
-/* Hamburger (mobile) */
-.nav-toggle{display:none}
-.hamburger{display:none;width:40px;height:34px;align-items:center;justify-content:center;cursor:pointer}
-.hamburger span{display:block;width:24px;height:2px;background:#0b0f1a;margin:4px 0;border-radius:2px}
+/* 🔸 Цагаан тусгаарлагч */
+.hero-sep{height:10px;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.08) inset}
 
 /* ─── Hero banner ─── */
-/* Өндрийг CSS-аар барина — зураг зүсэгдэж багтана */
-.hero-banner{position:relative;overflow:hidden;height:260px;margin:0 auto}
-.hero-banner img{width:100%;height:100%;object-fit:cover}
+.hero-banner{position:relative;overflow:hidden;height:240px;margin:0 auto}
+.hero-banner img{
+  width:100%;height:100%;object-fit:cover;object-position:center; /* төвдөө тайрч багтаана */
+}
 .btn-urgent{
   position:absolute;left:20px;bottom:20px;
   background:var(--red);color:#fff;padding:12px 18px;border-radius:6px;
@@ -73,53 +75,19 @@ h2{margin:24px 0 10px}
 .footer .container{padding:18px 0}
 
 /* ─── Responsive ─── */
-@media (max-width:1100px){
+@media (max-width:1050px){
   .site-title{font-size:26px}
 }
-
 @media (max-width:900px){
-  .topbar-row{flex-direction:column;align-items:flex-start}
   .site-title{font-size:22px}
   .site-subtitle{font-size:12px}
-  .search{display:none}              /* утсанд хайлт/сошл багасгана */
-  .socials{display:none}
   .hero-banner{height:220px}
-  .cards3{grid-template-columns:1fr} /* 3 карт -> 1 багана */
+  .cards3{grid-template-columns:1fr}
+  /* mobile-д сошиал/хайлт харагддаг, жижигрүүлнэ */
+  .socials .ic{width:24px;height:24px}
+  .search input{height:30px}
 }
-
-/* Утас: hamburger асна, меню drop-down болно */
-@media (max-width:720px){
-  .hamburger{display:flex}
-  .menu{
-    position:absolute; left:0; right:0; top:100%;
-    background:#fff; color:#0b0f1a; border-bottom:1px solid #e6e8ee;
-    display:none; flex-direction:column; gap:0; padding:8px 20px; z-index:50;
-  }
-  .menu a{padding:10px 0; border-bottom:1px dashed #e6e8ee}
-  .menu a:last-child{border-bottom:none}
-  .nav-toggle:checked ~ .menu{display:flex}
-}
-
-@media (pointer:coarse),(max-width:640px){
-  .btn-urgent{left:12px;bottom:12px;padding:10px 14px}
+@media (max-width:640px){
   .hero-banner{height:200px}
-  #secret-corner{
-    right:calc(env(safe-area-inset-right,0px) + 14px);
-    bottom:calc(env(safe-area-inset-bottom,0px) + 16px);
-    width:48px;height:48px;border-radius:14px;
-  }
-  
-/* ==== HERO HEIGHT OVERRIDE (put at the very end) ==== */
-.hero-banner{
-  height: 300px !important;          /* таны хүссэн өндөр */
-  overflow: hidden;
+  .btn-urgent{left:12px;bottom:12px;padding:10px 14px}
 }
-.hero-banner img{
-  width: 100% !important;
-  height: 100% !important;           /* контейнерийн 200px-т таарна */
-  object-fit: cover !important;      /* зургийг хайчилж багтаана */
-  display: block;
-}
-  }
-
-
